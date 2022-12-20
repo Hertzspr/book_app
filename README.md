@@ -1,3 +1,3 @@
 # book_app
 
-this app consists of book catalogue and its book detail.
+This app consists of abook catalogue and its books' detail.
