@@ -131,7 +131,7 @@ class _DetailBookPageState extends State<DetailBookPage> {
                 const SizedBox(height: 10,),
                 Text(detailController!.detailBook!.desc!,
                   style: const TextStyle(
-                    fontSize: 12,
+                    fontSize: 15,
                   ),
                 ),
                 const SizedBox(height: 10,),
