@@ -31,11 +31,11 @@ class _DetailBookPageState extends State<DetailBookPage> {
     return Consumer<BookController>(
       builder: (context, controller, _)=> Scaffold(
         appBar: AppBar(
-          title: Text('Detail'),
+          title: const Text('Detail'),
         ),
         body: detailController!.detailBook == null
             ?
-        Center(child: CircularProgressIndicator())
+        const Center(child: CircularProgressIndicator())
             :
         Padding(
           padding: const EdgeInsets.all(15.0),
@@ -68,18 +68,18 @@ class _DetailBookPageState extends State<DetailBookPage> {
                           children: [
                             Text(detailController!.detailBook!.title!,
                               style:
-                              TextStyle(
+                              const TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                             Text(detailController!.detailBook!.authors!,
                               style:
-                              TextStyle(
+                              const TextStyle(
                                 fontSize: 10,
                               ),
                             ),
-                            SizedBox(height: 15,),
+                            const SizedBox(height: 15,),
                             Text(detailController!.detailBook!.subtitle!,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 3,
@@ -97,7 +97,7 @@ class _DetailBookPageState extends State<DetailBookPage> {
                             ),
                             Text(detailController!.detailBook!.price!,
                               style:
-                              TextStyle(
+                              const TextStyle(
                                 fontSize: 13,
                                 color: Colors.blueAccent,
                               ),
@@ -108,57 +108,57 @@ class _DetailBookPageState extends State<DetailBookPage> {
                     ),
                     ],
                   ),
-                SizedBox(height: 5,),
-                Container(
+                const SizedBox(height: 5,),
+                SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
                     //style: ElevatedButton,
                     onPressed: () async {
-                      print('url');
+                      //print('url');
                       Uri uri = Uri.parse(detailController!.detailBook!.url!);
                       try {
                         !await canLaunchUrl(uri)
                             ? launchUrl(uri)
-                            : print('Unable to navigate');
+                            : debugPrint('Unable to navigate');
                       } catch (e) {
-                        print('error');
-                        print(e);
+                        debugPrint('error');
+                        debugPrint(e.toString());
                       }
                     },
-                    child: Text('Buy'),
+                    child: const Text('Buy'),
                   ),
                 ),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
                 Text(detailController!.detailBook!.desc!,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 12,
                   ),
                 ),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     //Text(detailBook!.isbn10!),
-                    Text('Year: ' + detailController!.detailBook!.year!,
+                    Text('Year: ${detailController!.detailBook!.year!}',
                     ),
-                    Text('ISBN: ' + detailController!.detailBook!.isbn13!,
+                    Text('ISBN: ${detailController!.detailBook!.isbn13!}',
                     ),
-                    Text(detailController!.detailBook!.pages! + 'Pages',
+                    Text('${detailController!.detailBook!.pages!} Pages',
                     ),
-                    Text('Publisher: ' + detailController!.detailBook!.publisher!,
+                    Text('Publisher: ${detailController!.detailBook!.publisher!}',
                     ),
-                    Text('Language: ' + detailController!.detailBook!.language!,
+                    Text('Language: ${detailController!.detailBook!.language!}',
                     ),
                   ],
                 ),
-                Divider(
+                const Divider(
                   height: 40,
                   thickness: 5,
                 ),
                 detailController!.similarBooks == null
-                ? CircularProgressIndicator()
+                ? const CircularProgressIndicator()
                 : Expanded(
-                  child: Container(
+                  child: SizedBox(
                     height: 150,
                     child: ListView.builder(
                       // shrinkWrap: true,
@@ -169,7 +169,7 @@ class _DetailBookPageState extends State<DetailBookPage> {
                         final current = detailController!.similarBooks!.books![index];
                         return Container(
                           width: 80,
-                          margin: EdgeInsets.symmetric(horizontal: 5),
+                          margin: const EdgeInsets.symmetric(horizontal: 5),
                           child: Column(
                             children: [
                               Expanded(
@@ -179,7 +179,7 @@ class _DetailBookPageState extends State<DetailBookPage> {
                               Expanded(child: Text(current.title!,
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.center,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 9,
                               ),
                               ))
